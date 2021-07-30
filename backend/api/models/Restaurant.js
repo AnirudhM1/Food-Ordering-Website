@@ -6,17 +6,26 @@ const restaurantSchema = new Schema({
         type: String,
         required: true
     },
-    imageUrl: {
-        type: String,
-        required: true
-    },
+    imageUrl: String,
     location: {
-        type: Schema.Types.ObjectId,
-        ref: 'Location',
+        type: {
+            address: {
+                type: String,
+                required: true
+            },
+            lattitude: {
+                type: Number,
+                required: true
+            },
+            longitude: {
+                type: Number,
+                required: true
+            }
+        },
         required: true
     },
     // Contact numbers of the restaurant. code includes the dialing code. eg +91, 022 etc
-    contacts: [{code: String, number: Number}],
+    contacts: [{ code: String, number: Number }],
     // Type of food the restaurant serves. eg chinese, pizza etc.
     type: [String],
     rating: {
@@ -28,11 +37,8 @@ const restaurantSchema = new Schema({
         type: Number,
         required: true
     },
-    menu: {
-        type: [{type: Schema.Types.ObjectId, ref: 'FoodGroup'}],
-        required: true
-    }
+    menu: [{ type: Schema.Types.ObjectId, ref: 'FoodGroup' }]
     // TODO Create offers field which stores all the available offers/discounts offered by the restaurant
-})
+});
 
 module.exports = mongoose.model('Restaurant', restaurantSchema);
