@@ -1,42 +1,44 @@
-if (process.env.NODE_ENV !== 'production') {
-    require('dotenv').config();
-}
-
 const express = require('express');
-const mongoose = require('mongoose');
-
+const passport = require('passport');
+const { isLoggedIn } = require('./middleware');
 const restaurantRoutes = require('./api/routes/Restaurant');
+
+// Run config files
+if (process.env.NODE_ENV !== 'production') require('dotenv').config();
+require('./api/config/Mongoose');
+require('./api/config/Passport');
+const session = require('./api/config/Session');
 
 const app = express();
 
-// Connecting to mongodb database via mongoose
-mongoose.connect(
-    process.env.MONGODB_URI || 'mongodb://localhost:27017/food-ordering-app',
-    {
-        useNewUrlParser: true,
-        useCreateIndex: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false
-    }
-);
-
-// Checking if mongoose is connected to the database
-const db = mongoose.connection;
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', () => {
-    console.log('Database connected');
-});
-
 // Middleware
 app.use(express.urlencoded({ extended: true }));
+app.use(session);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
-app.use('/restaurants', restaurantRoutes);
+app.use('/api/restaurants', restaurantRoutes);
 
 // Home route
 app.get('/', (req, res) => {
     res.send('HOME PAGE');
 });
+
+app.get('/google', passport.authenticate('google', { scope: ['profile'] }), (req, res) => {
+    res.send('AUTHENTICATED!!');
+});
+
+app.get('/auth', isLoggedIn, (req, res) => {
+    res.send(req.user.name);
+});
+
+app.get('/logout', (req, res) => {
+    req.logout();
+    res.send('Logged Out');
+});
+
+app.get('/api/callback', passport.authenticate('google'), (req, res) => res.send(req.user));
 
 // Port on which server will run on
 const PORT = process.env.PORT || 8000;
