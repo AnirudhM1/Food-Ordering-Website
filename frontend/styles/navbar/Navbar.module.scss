@@ -1,0 +1,25 @@
+.navbar {
+    --navbar-height: 4rem;
+    background-color: var(--bg-primary);
+    width: 100vw;
+    height: var(--navbar-height);
+    position: fixed;
+    top: 0;
+
+    display: grid;
+    place-items: center;
+
+    .container {
+        height: 100%;
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .address {
+            margin-left: 1rem;
+            margin-right: auto;
+            color: var(--text-primary);
+        }
+    }
+}

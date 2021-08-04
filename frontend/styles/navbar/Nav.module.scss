@@ -1,0 +1,31 @@
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: var(--navbar-height);
+    text-decoration: none;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    filter: grayscale(100%) opacity(0.7);
+    transition: var(--transition-speed);
+
+    .text {
+        display: none;
+        color: var(--text-primary);
+    }
+
+    .group {
+        .secondary {
+            color: white;
+        }
+        .secondary {
+            transition: var(--transition-speed);
+        }
+    }
+}
+
+.nav:hover {
+    filter: grayscale(0%) opacity(1);
+    background-color: var(--bg-secondary);
+}
