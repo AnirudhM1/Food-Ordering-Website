@@ -23,7 +23,7 @@ module.exports.createRestaurant = async (req, res) => {
     const imageUrl = req.body.imageUrl || null;
     const contacts = req.body.contacts || null;
     const type = req.body.type || null;
-    const menu = req.body.type || null;
+    const menu = req.body.menu || null;
 
     const restaurant = new Restaurant({
         name,

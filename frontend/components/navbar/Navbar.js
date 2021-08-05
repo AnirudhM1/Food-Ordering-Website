@@ -1,5 +1,5 @@
 import Nav from './Nav'
-import Styles from '../../styles/navbar/Navbar.module.scss'
+import Styles from '../../styles/components/navbar/Navbar.module.scss'
 
 const Navbar = () => {
 

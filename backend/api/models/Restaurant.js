@@ -27,7 +27,7 @@ const restaurantSchema = new Schema({
     // Contact numbers of the restaurant. code includes the dialing code. eg +91, 022 etc
     contacts: [{ code: String, number: Number }],
     // Type of food the restaurant serves. eg chinese, pizza etc.
-    type: [String],
+    type: String,
     rating: {
         type: Number,
         requred: true

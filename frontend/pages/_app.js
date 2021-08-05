@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps }) {
     return (
         <>
             <Navbar />
-            <div style={{ "margin-top": '4rem' }}>
+            <div style={{ "marginTop": '4rem' }}>
                 <Component {...pageProps} />
             </div>
         </>

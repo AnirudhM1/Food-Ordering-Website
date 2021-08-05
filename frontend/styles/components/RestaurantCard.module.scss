@@ -1,0 +1,38 @@
+.card {
+    border: solid;
+    padding: 2rem;
+
+    .image {
+        width: 100%;
+        //aspect-ratio: 254/160;
+    }
+    .name {
+        margin-bottom: 0;
+    }
+    .type {
+        margin: 0;
+    }
+    .extras {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1.6rem;
+
+        p {
+            margin: 0;
+            transform: translateY(-0.25rem);
+            font-size: 1.5rem;
+        }
+
+        .rating {
+            display: flex;
+            padding: 0.3rem 0.5rem 0 0.5rem;
+            svg {
+                margin-right: 0.5rem;
+            }
+            .star {
+                color: white;
+            }
+        }
+    }
+}

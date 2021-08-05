@@ -1,0 +1,15 @@
+.form {
+    width: 50%;
+    height: 3rem;
+    display: grid;
+    place-items: center;
+    margin-top: 3rem;
+
+    .input {
+        height: 100%;
+        width: 100%;
+        padding-left: 5rem;
+        padding-right: 2rem;
+        font-size: 1.5rem;
+    }
+}
