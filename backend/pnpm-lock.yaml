@@ -6,6 +6,7 @@ specifiers:
   express: ^4.17.1
   express-session: ^1.17.2
   mongoose: ^5.13.0
+  mongoose-fuzzy-searching: ^2.0.2
   nodemon: ^2.0.9
   passport: ^0.4.1
   passport-google-oauth20: ^2.0.0
@@ -15,6 +16,7 @@ dependencies:
   express: 4.17.1
   express-session: 1.17.2
   mongoose: 5.13.0
+  mongoose-fuzzy-searching: 2.0.2_mongoose@5.13.0
   passport: 0.4.1
   passport-google-oauth20: 2.0.0
 
@@ -904,6 +906,14 @@ packages:
       safe-buffer: 5.2.1
     optionalDependencies:
       saslprep: 1.0.3
+    dev: false
+
+  /mongoose-fuzzy-searching/2.0.2_mongoose@5.13.0:
+    resolution: {integrity: sha512-Hbmx59VWJjQJDNdoyQ8bdECaqpis0pKoliWzf5eILzFs2KO7laUJpaQWJySN9OvdQS/gM9fURMSzQVQoLeZ3DA==}
+    peerDependencies:
+      mongoose: 5.10.x
+    dependencies:
+      mongoose: 5.13.0
     dev: false
 
   /mongoose-legacy-pluralize/1.0.2_mongoose@5.13.0:

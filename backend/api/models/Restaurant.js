@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoose_fuzzy_searching = require('mongoose-fuzzy-searching');
 const Schema = mongoose.Schema;
 
 const restaurantSchema = new Schema({
@@ -41,4 +42,13 @@ const restaurantSchema = new Schema({
     // TODO Create offers field which stores all the available offers/discounts offered by the restaurant
 });
 
+restaurantSchema.plugin(mongoose_fuzzy_searching, { fields: ['name', 'type'] });
+
+restaurantSchema.statics.searchByQuery = async function (query) {
+    const results = await this.fuzzySearch(query).catch(e => console.error(e))
+    return results;
+    /* const results = await this.find({
+        $text: { $search: `${query}` }
+    }).sort({ score: { $meta: "textScore" } }).catch(e => console.error(e)) */
+}
 module.exports = mongoose.model('Restaurant', restaurantSchema);

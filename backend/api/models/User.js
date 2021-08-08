@@ -11,13 +11,13 @@ const userSchema = new Schema({
     address: [String]
 });
 
-userSchema.statics.findOrCreate = async function (querry) {
+userSchema.statics.findOrCreate = async function (query) {
     try {
-        let data = await this.findOne(querry);
+        let data = await this.findOne(query);
         if (data) {
             return data;
         } else {
-            data = new this(querry);
+            data = new this(query);
             data = await data.save();
             return data;
         }

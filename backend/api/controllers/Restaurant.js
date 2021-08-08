@@ -50,3 +50,8 @@ module.exports.deleteRestaurantById = async (req, res) => {
     const restaurant = await Restaurant.findByIdAndDelete(restaurantId);
     res.status(200).send(restaurant);
 };
+
+module.exports.serachRestaurant = async (req, res) => {
+    const restaurants = await Restaurant.searchByQuery(req.body.query);
+    res.status(200).send(restaurants)
+}
