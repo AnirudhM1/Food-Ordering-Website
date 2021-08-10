@@ -21,7 +21,7 @@ const Home = ({ restaurants }) => {
 export default Home;
 
 export const getStaticProps = async () => {
-    const res = await axios.get('http://localhost:8000/api/restaurants').catch(e => console.error(e))
+    const res = await axios.get('http://localhost:3000/api/restaurants').catch(e => console.error(e))
     const restaurants = res.data
     return {
         props: {
