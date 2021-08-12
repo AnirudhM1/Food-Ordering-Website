@@ -4,7 +4,7 @@ import RestaurantCard from '../components/RestaurantCard'
 import Styles from '../styles/pages/Home.module.scss'
 
 const Home = ({ restaurants }) => {
-    const restaurant = restaurants[0]
+    console.dir(restaurants);
     return (
         <div className={Styles.main}>
             HOME
@@ -21,7 +21,7 @@ const Home = ({ restaurants }) => {
 export default Home;
 
 export const getStaticProps = async () => {
-    const res = await axios.get('http://localhost:3000/api/restaurants').catch(e => console.error(e))
+    const res = await axios.get(`${process.env.NEXTAUTH_URL}/api/restaurants`).catch(e => console.error(e))
     const restaurants = res.data
     return {
         props: {

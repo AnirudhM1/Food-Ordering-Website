@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const mongoose_fuzzy_searching = require('mongoose-fuzzy-searching');
+import mongoose from 'mongoose';
+import mongoose_fuzzy_searching from 'mongoose-fuzzy-searching';
 const Schema = mongoose.Schema;
 
 const restaurantSchema = new Schema({
@@ -51,4 +51,4 @@ restaurantSchema.statics.searchByQuery = async function (query) {
         $text: { $search: `${query}` }
     }).sort({ score: { $meta: "textScore" } }).catch(e => console.error(e)) */
 }
-module.exports = mongoose.model('Restaurant', restaurantSchema);
+module.exports = mongoose.models.Restaurant || mongoose.model('Restaurant', restaurantSchema);

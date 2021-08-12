@@ -15,4 +15,6 @@ router.route('/auth/logout')
     .get(authController.logout)
 
 router.route('/user')
-    .get(isLoggdIn, catchAsync(authController.getUser))
+    .get(isLoggedIn, catchAsync(authController.getUser))
+
+module.exports = router;

@@ -1,0 +1,19 @@
+.page {
+    display: grid;
+    place-items: center;
+
+    .main {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 5fr;
+
+        .container {
+            width: 80%;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            column-gap: 2rem;
+            row-gap: 3rem;
+            margin: 5rem;
+        }
+    }
+}

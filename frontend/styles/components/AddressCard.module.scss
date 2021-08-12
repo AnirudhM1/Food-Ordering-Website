@@ -1,0 +1,21 @@
+.container {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 1rem;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid;
+    border-width: thin;
+
+    h4 {
+        margin: 0;
+        font-size: 1.1rem;
+    }
+
+    p {
+        margin: 0;
+    }
+}

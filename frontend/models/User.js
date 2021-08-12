@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -6,12 +7,15 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    image: String,
     googleId: Number,
     contact: Number,
+    email: String,
     address: [String]
 });
 
-userSchema.statics.findOrCreate = async function (query) {
+userSchema.statics.findOrCreate = async function (name, image, googleId, email) {
+    const query = { name, image, googleId, email };
     try {
         let data = await this.findOne(query);
         if (data) {
@@ -26,4 +30,4 @@ userSchema.statics.findOrCreate = async function (query) {
     }
 };
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = mongoose.models.User || mongoose.model('User', userSchema);

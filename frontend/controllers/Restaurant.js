@@ -1,4 +1,4 @@
-const Restaurant = require('../models/Restaurant');
+import Restaurant from '../models/Restaurant'
 
 module.exports.getRestaurants = async (req, res) => {
     const restaurants = await Restaurant.find({});

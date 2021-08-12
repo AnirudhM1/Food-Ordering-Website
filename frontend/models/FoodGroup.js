@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const foodGroupSchema = new Schema({
@@ -6,7 +6,7 @@ const foodGroupSchema = new Schema({
         type: String,
         required: true
     },
-    foodItems: [{type: Schema.Types.ObjectId, ref: 'FoodItem'}]
+    foodItems: [{ type: Schema.Types.ObjectId, ref: 'FoodItem' }]
 });
 
-module.exports = mongoose.model('FoodGroup', foodGroupSchema);
+module.exports = mongoose.models.FoodGroup || mongoose.model('FoodGroup', foodGroupSchema);
