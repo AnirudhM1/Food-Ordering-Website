@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import Address from './Address'
 
 const Schema = mongoose.Schema;
 
@@ -11,13 +12,20 @@ const userSchema = new Schema({
     googleId: Number,
     contact: Number,
     email: String,
-    address: [String]
+    address: [{ type: Schema.Types.ObjectId, ref: 'Address' }],
+    history: [{
+        address: String,
+        restaurant: String,
+        food: [{ type: Schema.Types.ObjectId, ref: 'FoodItem' }],
+        total: Number
+    }]
 });
 
 userSchema.statics.findOrCreate = async function (name, image, googleId, email) {
     const query = { name, image, googleId, email };
+    const search = { googleId };
     try {
-        let data = await this.findOne(query);
+        let data = await this.findOne(search);
         if (data) {
             return data;
         } else {

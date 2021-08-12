@@ -10,15 +10,10 @@ const user = ({ user_json }) => {
     const edit = () => {
         console.log('EDIT');
     }
-    const address = [
-        { title: 'Home', text: 'A-74, Maker Kundan Gardens, Juhu tara road, Santacruz West, Mumbai-4000054' },
-        { title: 'Home', text: 'A-74, Maker Kundan Gardens, Juhu tara road, Santacruz West, Mumbai-4000054' },
-        { title: 'Home', text: 'A-74, Maker Kundan Gardens, Juhu tara road, Santacruz West, Mumbai-4000054' }
-    ]
 
     const [option, setOption] = useState('address');
 
-    const data = (option === 'address') ? /* user. */address : user.history
+    const data = (option === 'address') ? user && user.address : user && user.history
     const Card = (option === 'address') ? AddressCard : OrderCard
 
 
@@ -52,7 +47,7 @@ const user = ({ user_json }) => {
                             </div>
                             <div className={(option === 'address' ? Styles.address : Styles.order)}>
                                 {data.map((element, idx) => (
-                                    <Card key={idx} element={element} />
+                                    <Card key={idx} element={element} userId={user._id} />
                                 ))}
                             </div>
                         </div>
@@ -67,7 +62,7 @@ export default user
 
 export const getServerSideProps = async (context) => {
     const session = await getSession(context)
-    const user_json = (session) ? await User.findOne({ googleId: session.user.googleId }).then(res => JSON.stringify(res)) : null
+    const user_json = (session) ? await User.findOne({ googleId: session.user.googleId }).populate('address').then(res => JSON.stringify(res)) : null
     return {
         props: {
             user_json

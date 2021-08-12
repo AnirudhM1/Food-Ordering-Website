@@ -1,7 +1,6 @@
 import Styles from '../styles/components/RestaurantCard.module.scss'
 
 const RestaurantCard = ({ name, type, imageUrl, rating, cost }) => {
-    console.log({ name })
     return (
         <div className={Styles.card}>
             <img src={imageUrl} alt={name} className={Styles.image} />

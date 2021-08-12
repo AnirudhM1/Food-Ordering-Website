@@ -4,7 +4,6 @@ import RestaurantCard from '../components/RestaurantCard'
 import Styles from '../styles/pages/Home.module.scss'
 
 const Home = ({ restaurants }) => {
-    console.dir(restaurants);
     return (
         <div className={Styles.main}>
             HOME
