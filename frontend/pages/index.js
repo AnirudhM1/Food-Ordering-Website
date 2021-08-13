@@ -10,7 +10,7 @@ const Home = ({ restaurants }) => {
             <Search />
             <div className={Styles.container}>
                 {restaurants.map((restaurant) => (
-                    <RestaurantCard key={restaurant._id} name={restaurant.name} type={restaurant.type} imageUrl={restaurant.imageUrl} rating={restaurant.rating} cost={restaurant.cost} />
+                    <RestaurantCard key={restaurant._id} id={restaurant._id} name={restaurant.name} type={restaurant.type} imageUrl={restaurant.imageUrl} rating={restaurant.rating} cost={restaurant.cost} />
                 ))}
             </div>
         </div>

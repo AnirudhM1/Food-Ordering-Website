@@ -16,7 +16,7 @@ const foodItemSchema = new Schema({
         required: true
     },
     imageUrl: String,
-    quantity: String
+    quantity: Number
 });
 
 module.exports = mongoose.models.FoodItem || mongoose.model('FoodItem', foodItemSchema);

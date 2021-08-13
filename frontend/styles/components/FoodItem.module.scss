@@ -1,0 +1,47 @@
+.item {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+    margin-right: 5rem;
+    margin-bottom: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: solid;
+    border-width: thin;
+
+    .text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        p {
+            margin: 0;
+        }
+        .name {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        .description {
+            margin-bottom: 1rem;
+        }
+        .extras {
+            display: flex;
+            flex-direction: row;
+            align-content: center;
+
+            .cost {
+                margin-right: 5rem;
+            }
+        }
+    }
+
+    .imageContainer {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        padding: 0.3rem;
+        .image {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+        }
+    }
+}

@@ -9,6 +9,9 @@ export default async function handler(req, res) {
         case 'GET':
             catchAsync(restaurantController.getRestaurantById(req, res));
             break;
+        case 'PUT':
+            catchAsync(restaurantController.addMenu(req, res));
+            break;
         case 'DELETE':
             catchAsync(restaurantController.deleteRestaurantById(req, res));
             break;
