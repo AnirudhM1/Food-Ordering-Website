@@ -9,6 +9,9 @@ export default async function handler(req, res) {
         case 'POST':
             catchAsync(userController.addHistory(req, res));
             break;
+        case 'GET':
+            res.send('HELLO')
+            break
         default:
             res.status(400).json({ success: false })
             break;

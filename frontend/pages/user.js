@@ -62,7 +62,7 @@ export default user
 
 export const getServerSideProps = async (context) => {
     const session = await getSession(context)
-    const user_json = (session) ? await User.findOne({ googleId: session.user.googleId }).populate('address').then(res => JSON.stringify(res)) : null
+    const user_json = (session) ? await User.findOne({ googleId: session.user.googleId }).populate('address').populate('history.food.item').then(res => JSON.stringify(res)) : null
     return {
         props: {
             user_json

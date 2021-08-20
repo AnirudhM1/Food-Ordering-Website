@@ -38,17 +38,17 @@ const restaurantSchema = new Schema({
         type: Number,
         required: true
     },
-    // menu: [{ type: Schema.Types.ObjectId, ref: 'FoodGroup' }]
-    menu: [{
-        name: String,
-        foodGroups: [{
-            name: String,
-            description: String,
-            cost: Number,
-            imageUrl: String,
-            quantity: Number
-        }]
-    }]
+    menu: [{ type: Schema.Types.ObjectId, ref: 'FoodGroup' }]
+    // menu: [{
+    //     name: String,
+    //     foodGroups: [{
+    //         name: String,
+    //         description: String,
+    //         cost: Number,
+    //         imageUrl: String,
+    //         quantity: Number
+    //     }]
+    // }]
     // TODO Create offers field which stores all the available offers/discounts offered by the restaurant
 });
 

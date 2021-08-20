@@ -16,7 +16,7 @@ const userSchema = new Schema({
     history: [{
         address: String,
         restaurant: String,
-        food: [{ type: Schema.Types.ObjectId, ref: 'FoodItem' }],
+        food: [{ item: { type: Schema.Types.ObjectId, ref: 'FoodItem' }, count: Number }],
         total: Number
     }]
 });

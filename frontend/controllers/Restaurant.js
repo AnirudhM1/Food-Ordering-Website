@@ -49,7 +49,10 @@ module.exports.createRestaurant = async (req, res) => {
 
 module.exports.getRestaurantById = async (req, res) => {
     const restaurantId = req.query.id;
-    const restaurant = await Restaurant.findById(restaurantId);
+    const restaurant = await Restaurant.findById(restaurantId).populate({
+        path: 'menu',
+        populate: { path: 'foodItems' }
+    });
     res.status(200).send(restaurant);
 };
 
@@ -68,6 +71,9 @@ module.exports.addMenu = async (req, res) => {
     const id = req.query.id;
     const restaurant = await Restaurant.findById(id);
     const menu = req.body.menu;
+    if (!restaurant.menu) {
+        restaurant.menu = []
+    }
 
     for (let i = 0; i < menu.foodGroups.length; i++) {
         let group = menu.foodGroups[i];
@@ -79,8 +85,10 @@ module.exports.addMenu = async (req, res) => {
             foodGroup.foodItems.push(foodItem);
             await foodItem.save();
         }
+        restaurant.menu.push(foodGroup);
+        await foodGroup.save();
     }
 
     await restaurant.save();
-    res.send({ success: true });
+    res.send({ success: true, restaurant });
 }

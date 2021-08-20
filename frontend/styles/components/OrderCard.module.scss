@@ -1,0 +1,55 @@
+.order {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border: 2px solid;
+    margin-bottom: 5rem;
+    padding: 1rem 2rem;
+
+    .restaurant {
+        font-weight: 600;
+        font-size: 1.3rem;
+        border-bottom: solid;
+    }
+
+    .item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid;
+
+        .food {
+            text-align: center;
+            font-weight: 400;
+        }
+
+        .info {
+            display: flex;
+            align-items: center;
+            padding: 0;
+
+            .count {
+                color: lightgreen;
+                border: 1px solid lightgray;
+                font-weight: 600;
+                width: 3rem;
+                text-align: center;
+            }
+
+            .amount {
+                font-weight: 300;
+                font-size: 0.9rem;
+                margin-left: 2rem;
+            }
+        }
+    }
+
+    .bill {
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}

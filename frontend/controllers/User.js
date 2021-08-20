@@ -1,5 +1,6 @@
 import User from '../models/User'
 import Address from '../models/Address'
+import FoodItem from '../models/FoodItem'
 
 module.exports.addAddress = async (req, res) => {
     const id = req.query.id;
@@ -59,6 +60,20 @@ module.exports.updateNameAndImage = async (req, res) => {
 }
 
 module.exports.addHistory = async (req, res) => {
-    const { address, restaurant, food } = req.body;
-    res.status(201).json({ success: true });
+    console.log('Request recieved')
+    const id = req.query.id;
+    const user = await User.findById(id)
+    const { address, restaurant, food, total } = req.body;
+    const order = { address, restaurant, food, total }
+    const foodArr = []
+    for (let i = 0; i < food.length; i++) {
+        const foodItem = await FoodItem.findById(food[i].item)
+        foodArr.push({ item: foodItem, count: food[i].count });
+    }
+    console.dir({ foodArr })
+    order.food = foodArr;
+    console.dir({ order })
+    user.history.push(order);
+    await user.save();
+    res.status(201).json({ success: true, order });
 }
