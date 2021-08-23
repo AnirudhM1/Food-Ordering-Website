@@ -24,3 +24,8 @@
         width: 40%;
     }
 }
+
+.card:hover {
+    box-shadow: 8px 8px 5px darkblue, -8px -8px 5px darkblue, 8px -8px 5px darkblue, -8px 8px 5px darkblue;
+    background-color: black;
+}

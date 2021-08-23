@@ -3,21 +3,23 @@
     justify-content: center;
     margin-top: var(--navbar-height);
     min-height: calc(100vh - var(--navbar-height));
+    background-color: black;
 
     .container {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
         box-sizing: border-box;
         width: 80vw;
-        margin-top: 1rem;
+        margin-top: 2rem;
         padding: 3rem;
-        background: white;
         display: flex;
         flex-flow: column;
+        background-color: var(--bg-primary);
 
         .user {
             display: flex;
             justify-content: space-between;
+            background-image: linear-gradient(to left, black, darkblue);
             border: solid;
             border-width: thin;
             padding: 2rem;
@@ -55,6 +57,19 @@
                 display: grid;
                 gap: 2rem;
                 grid-template-columns: 1fr 1fr;
+
+                .addAddress {
+                    display: grid;
+                    place-items: center;
+                    min-height: 100px;
+
+                    button {
+                        border-radius: 20px;
+                        height: 40%;
+                        width: 50%;
+                        font-size: larger;
+                    }
+                }
             }
         }
     }

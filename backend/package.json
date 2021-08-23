@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/AnirudhM1/Food-Ordering-Website#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "connect-mongo": "^4.4.1",
     "express": "^4.17.1",
     "express-session": "^1.17.2",

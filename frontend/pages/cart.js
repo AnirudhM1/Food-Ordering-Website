@@ -1,8 +1,9 @@
-import { useContext } from 'react'
+import { useState, useContext } from 'react'
 import { CartContext } from './_app'
 import { getSession } from 'next-auth/client'
 import User from '../models/User'
 import CartAddressCard from '../components/CartAddressCard'
+import AddAddress from '../components/AddAddress'
 import Styles from '../styles/pages/Cart.module.scss'
 
 const cart = ({ user_json }) => {
@@ -14,6 +15,8 @@ const cart = ({ user_json }) => {
     const [cart, addItem] = context.cart
     const [restaurant, setReataurant] = context.restaurant
     const user = JSON.parse(user_json)
+
+    const [isActive, setIsActive] = useState(false)
 
     const calculateTotal = () => {
         let subtotal = 0;
@@ -39,6 +42,9 @@ const cart = ({ user_json }) => {
                         {user.address.map((address) => (
                             <CartAddressCard key={address._id} id={user._id} address={address} total={charges.total} />
                         ))}
+                        <div className={Styles.addAddress}>
+                            <button onClick={() => setIsActive(true)}>Add Address</button>
+                        </div>
                     </div>
                 </div>
                 <div className={Styles.order}>
@@ -85,6 +91,7 @@ const cart = ({ user_json }) => {
                     </div>
                 </div>
             </div>
+            <AddAddress id={user._id} isActive={isActive} setIsActive={setIsActive} />
         </div>
     )
 }
@@ -94,6 +101,15 @@ export default cart
 export const getServerSideProps = async (context) => {
     const session = await getSession(context)
     const user_json = (session) ? await User.findOne({ googleId: session.user.googleId }).populate('address').then(res => JSON.stringify(res)) : null
+
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/api/auth/signin',
+                permanent: false
+            }
+        }
+    }
     return {
         props: {
             user_json

@@ -4,11 +4,12 @@
 
     /*----------CSS Variables----------*/
 
-    --text-primary: #b6b6b6;
+    --text-primary: #ffffff;
     --text-secondary: #ececec;
-    --bg-primary: #23232e;
+    --bg-primary: #181818;
     --bg-secondary: #141418;
     --transition-speed: 300ms;
+    --button-color: #4452fe;
     --navbar-height: 4rem;
 }
 
@@ -17,4 +18,14 @@ body {
     padding: 0;
     margin: 0;
     scroll-behavior: smooth;
+    color: var(--text-primary);
+    /* background: var(--bg-primary); */
+    background: var(--bg-primary);
+}
+
+button {
+    background-color: var(--button-color);
+    color: var(--text-primary);
+    border-radius: 10%;
+    border-style: none;
 }

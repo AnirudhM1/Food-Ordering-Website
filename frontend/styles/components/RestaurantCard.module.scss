@@ -1,5 +1,5 @@
 .card {
-    border: solid;
+    // border: solid;
     padding: 2rem;
 
     .image {
@@ -36,4 +36,10 @@
             }
         }
     }
+}
+
+.card:hover {
+    border: 1px solid;
+    box-shadow: 8px 8px 5px darkblue, -8px -8px 5px darkblue, 8px -8px 5px darkblue, -8px 8px 5px darkblue;
+    background-color: black;
 }
