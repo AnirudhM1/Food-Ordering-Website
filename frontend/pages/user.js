@@ -40,7 +40,7 @@ const user = ({ user_json }) => {
                                 </div>
                                 <div className={Styles.buttons}>
                                     <button onClick={edit}>EDIT</button>
-                                    <button onClick={signOut}>Sign Out</button>
+                                    <button onClick={() => signOut({ callbackUrl: `${window.location.origin}` })}>Sign Out</button>
                                 </div>
                             </div>
                             <div className={Styles.history}>

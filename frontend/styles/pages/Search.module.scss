@@ -1,19 +1,32 @@
 .page {
     display: grid;
     place-items: center;
+    background-image: linear-gradient(to bottom right, var(--bg-primary), darkblue);
 
     .main {
         width: 100%;
         display: grid;
-        grid-template-columns: 1fr 5fr;
+        place-items: center;
 
         .container {
             width: 80%;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             column-gap: 2rem;
             row-gap: 3rem;
             margin: 5rem;
+
+            @media (max-width: 1000px) {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            @media (max-width: 750px) {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            @media (max-width: 500px) {
+                grid-template-columns: 1fr;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-import axios from 'axios'
+// import axios from 'axios'
+import Restaurant from '../../models/Restaurant'
 import Search from '../../components/Search'
 import RestaurantCard from '../../components/RestaurantCard'
 import Styles from '../../styles/pages/Search.module.scss'
@@ -8,7 +9,6 @@ const search = ({ query, restaurants, isValid }) => {
         <div className={Styles.page}>
             <Search defaultValue={query} />
             <div className={Styles.main}>
-                <div className={Styles.filters}>filter</div>
                 <div className={Styles.container}>
                     {isValid || <h2>Invalid search</h2>}
                     {isValid && restaurants.map((restaurant) => (
@@ -26,10 +26,10 @@ export const getServerSideProps = async (context) => {
     const query = context.params.query;
     let restaurants
     try {
-        const res = await axios.post(`http://localhost:3000/api/restaurants/search`, { query })
-        restaurants = res.data
+        const res = await Restaurant.searchByQuery(query);
+        restaurants = res
     } catch (e) {
-        restaurants = []
+        restaurants = null
         console.error(e)
     }
 
@@ -38,7 +38,7 @@ export const getServerSideProps = async (context) => {
     return {
         props: {
             query,
-            restaurants,
+            restaurants: JSON.parse(JSON.stringify(restaurants)),
             isValid
         }
     }

@@ -70,10 +70,15 @@
                 padding: 1rem;
                 display: flex;
                 flex-direction: column;
-                justify-content: space-between;
+
+                button {
+                    margin-top: 2rem;
+                    margin-bottom: 2rem;
+                }
 
                 @media (max-width: 750px) {
                     flex-direction: row;
+                    justify-content: space-between;
                     align-items: center;
                     margin-bottom: 1rem;
                 }
@@ -93,6 +98,7 @@
                     display: grid;
                     place-items: center;
                     min-height: 100px;
+                    max-height: 10rem;
 
                     button {
                         border-radius: 20px;

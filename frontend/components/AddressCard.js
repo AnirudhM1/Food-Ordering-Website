@@ -5,7 +5,14 @@ import Styles from '../styles/components/AddressCard.module.scss'
 
 const AddressCard = ({ element, userId }) => {
     const address = element;
-    const BUTTON_URL = `http://localhost:3000/api/user/${userId}/address`;
+    let host
+    if (window) {
+        host = window.location.origin;
+    }
+    else {
+        host = 'http://localhost:3000'
+    }
+    const BUTTON_URL = `${host}/api/user/${userId}/address`;
     const addressId = address._id;
 
     const deleteAddr = async () => {

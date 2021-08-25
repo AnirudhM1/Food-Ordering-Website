@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import { Provider } from 'next-auth/client'
 import jwt from 'jsonwebtoken'
 import Navbar from '../components/navbar/Navbar'
-import { Provider } from 'next-auth/client'
+import Footer from '../components/Footer'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
@@ -82,6 +83,7 @@ function MyApp({ Component, pageProps }) {
                 <div className="app">
                     <Component {...pageProps} />
                 </div>
+                <Footer />
             </CartContext.Provider>
         </Provider>
     )

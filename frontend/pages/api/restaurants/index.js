@@ -9,9 +9,9 @@ export default async function handler(req, res) {
         case 'GET':
             catchAsync(restaurantController.getRestaurants(req, res))
             break;
-        case 'POST':
-            catchAsync(restaurantController.createRestaurant(req, res))
-            break;
+        // case 'POST':
+        //     catchAsync(restaurantController.createRestaurant(req, res))
+        //     break;
         default:
             res.status(400).json({ success: false })
             break;

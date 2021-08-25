@@ -1,0 +1,19 @@
+.main {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 4rem;
+    background-color: var(--bg-primary);
+
+    @media (max-width: 750px) {
+        margin-bottom: var(--navbar-height);
+    }
+
+    img {
+        max-height: 3rem;
+        border-radius: 50%;
+    }
+}

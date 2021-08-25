@@ -29,3 +29,40 @@
     box-shadow: 8px 8px 5px darkblue, -8px -8px 5px darkblue, 8px -8px 5px darkblue, -8px 8px 5px darkblue;
     background-color: black;
 }
+
+.success {
+    position: fixed;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 2rem;
+    background-color: darkgreen;
+    min-height: 5rem;
+    width: 40vw;
+    left: 50%;
+    bottom: 3rem;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (max-width: 750px) {
+        flex-direction: column;
+        width: 80vw;
+        padding: 1rem;
+        text-align: center;
+    }
+
+    button {
+        // background-color: black;
+        // margin-left: 5rem;
+        font-size: x-large;
+        height: 2rem;
+
+        @media (max-width: 750px) {
+            font-size: large;
+            height: 1.5rem;
+            margin-top: 1rem;
+        }
+    }
+}

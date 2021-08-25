@@ -5,7 +5,15 @@ import Styles from '../styles/components/AddAddress.module.scss'
 
 const AddressCard = ({ id, isActive, setIsActive }) => {
 
-    const URL = `http://localhost:3000/api/user/${id}/address`;
+    let host
+    if (window) {
+        host = window.location.origin;
+    }
+    else {
+        host = 'http://localhost:3000'
+    }
+
+    const URL = `${host}/api/user/${id}/address`;
     console.log(URL)
 
     const [title, setTitle] = useState('');
@@ -33,11 +41,11 @@ const AddressCard = ({ id, isActive, setIsActive }) => {
             <h2>Add an address</h2>
             <form className={Styles.form} onSubmit={addAddress}>
                 <div className={Styles.field}>
-                    <input type="text" name="title" className={Styles.input} value={title} onChange={(e) => setTitle(e.target.value)} />
+                    <input type="text" name="title" className={Styles.input} value={title} onChange={(e) => setTitle(e.target.value)} placeholder=" " />
                     <label htmlFor="title" className={Styles.label}>Title</label>
                 </div>
                 <div className={Styles.field}>
-                    <input type="text" name="text" className={Styles.input} value={text} onChange={(e) => setText(e.target.value)} />
+                    <input type="text" name="text" className={Styles.input} value={text} onChange={(e) => setText(e.target.value)} placeholder=" " />
                     <label htmlFor="text" className={Styles.label}>Address</label>
                 </div>
             </form>

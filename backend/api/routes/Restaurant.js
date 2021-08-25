@@ -11,6 +11,7 @@ router.get('/search', catchAsync(restaurantController.serachRestaurant))
 
 router.route('/:id')
     .get(catchAsync(restaurantController.getRestaurantById))
+    .put(catchAsync(restaurantController.addMenu))
     .delete(catchAsync(restaurantController.deleteRestaurantById));
 
 module.exports = router;

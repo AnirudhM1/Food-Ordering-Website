@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import FoodGroup from './FoodGroup';
+import FoodItem from './FoodItem'
 import mongoose_fuzzy_searching from 'mongoose-fuzzy-searching';
 const Schema = mongoose.Schema;
 

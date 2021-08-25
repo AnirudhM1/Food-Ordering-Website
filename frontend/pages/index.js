@@ -1,4 +1,6 @@
-import axios from 'axios';
+// import axios from 'axios';
+import dbConnect from '../lib/dbConnect'
+import Restaurant from '../models/Restaurant'
 import Search from '../components/Search';
 import RestaurantCard from '../components/RestaurantCard';
 import Styles from '../styles/pages/Home.module.scss';
@@ -26,14 +28,19 @@ const Home = ({ restaurants }) => {
 
 export default Home;
 
-export const getStaticProps = async () => {
-    const res = await axios
-        .get(`http://localhost:3000/api/restaurants`)
-        .catch((e) => console.error(e));
-    const restaurants = res.data;
+export const getStaticProps = async ({ req }) => {
+    await dbConnect();
+    let restaurants;
+    try {
+        restaurants = await Restaurant.find({})
+    } catch (e) {
+        console.error(e.message);
+        restaurants = []
+    }
+
     return {
         props: {
-            restaurants
+            restaurants: JSON.parse(JSON.stringify(restaurants))
         }
     };
 };

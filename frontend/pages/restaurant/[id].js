@@ -1,10 +1,12 @@
 import React, { useContext } from 'react'
-import axios from 'axios'
+// import axios from 'axios'
+import Restaurant from '../../models/Restaurant'
+import dbConnect from '../../lib/dbConnect'
 import FoodGroup from '../../components/FoodGroup'
 import { CartContext } from '../_app'
 import Styles from '../../styles/pages/Restaurant.module.scss'
 
-const Restaurant = ({ restaurant }) => {
+const restaurant = ({ restaurant }) => {
 
     const context = useContext(CartContext)
     const [cart, addItem] = context.cart
@@ -80,14 +82,20 @@ const Restaurant = ({ restaurant }) => {
     )
 }
 
-export default Restaurant
+export default restaurant
 
 export const getServerSideProps = async (context) => {
+    await dbConnect();
     const id = context.query.id;
-    const restaurant = await axios.get(`http://localhost:3000/api/restaurants/${id}`).then(res => res.data);
+    const restaurantId = id
+    const restaurant = await Restaurant.findById(restaurantId).populate({
+        path: 'menu',
+        populate: { path: 'foodItems' }
+    }).catch(e => { console.error(e); return {} });
+
     return {
         props: {
-            restaurant
+            restaurant: JSON.parse(JSON.stringify(restaurant))
         }
     }
 }

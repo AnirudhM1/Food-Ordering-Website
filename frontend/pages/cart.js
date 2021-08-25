@@ -8,7 +8,7 @@ import CartAddressCard from '../components/CartAddressCard'
 import AddAddress from '../components/AddAddress'
 import Styles from '../styles/pages/Cart.module.scss'
 
-const cart = ({ user_json }) => {
+const Cart = ({ user_json }) => {
 
     const DELIVERY_CHARGES = 30
     const GST_PERCENTAGE = 0.18
@@ -75,6 +75,14 @@ const cart = ({ user_json }) => {
 
     const charges = calculateTotal();
 
+    let host
+    if (window) {
+        host = window.location.origin;
+    }
+    else {
+        host = 'http://localhost:3000'
+    }
+
     return (
         <div className={Styles.main}>
             <div className={Styles.container}>
@@ -96,7 +104,7 @@ const cart = ({ user_json }) => {
                         <>
                             <h2>You need to sign in to be able to order</h2>
                             <div className={Styles.signInContainer}>
-                                <button onClick={() => signIn('google', { callbackUrl: `http://localhost:3000/cart` })}>Sign In</button>
+                                <button onClick={() => signIn('google', { callbackUrl: `${host}/cart` })}>Sign In</button>
                             </div>
                         </>
                     }
@@ -159,7 +167,7 @@ const cart = ({ user_json }) => {
     )
 }
 
-export default cart
+export default Cart
 
 export const getServerSideProps = async (context) => {
     const session = await getSession(context)
