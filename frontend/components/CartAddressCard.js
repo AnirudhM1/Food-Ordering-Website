@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useState, useContext } from 'react'
 import { CartContext } from '../pages/_app'
 import axios from 'axios'
 import Styles from '../styles/components/CartAddressCard.module.scss'
@@ -8,6 +8,8 @@ const CartAddressCard = ({ id, address, total }) => {
     const context = useContext(CartContext)
     const [cart, setCart] = context.cart
     const [restaurant, setRestaurant] = context.restaurant
+
+    // const [isNotificationVisible, setIsNotificationVisible] = useState(false);
 
     const deliver = async () => {
         const data = { address: address.title, restaurant: restaurant.name, total, food: [] };

@@ -17,6 +17,11 @@
         position: sticky;
         top: 0;
 
+        @media (max-width: 750px) {
+            margin-top: 2rem;
+            padding-left: 2rem;
+        }
+
         img {
             max-height: 100%;
             max-width: 100%;
@@ -24,6 +29,9 @@
 
         .about {
             margin-left: 5rem;
+            @media (max-width: 750px) {
+                margin-left: 3rem;
+            }
             .extras {
                 display: flex;
                 justify-content: space-between;
@@ -54,6 +62,10 @@
         display: grid;
         grid-template-columns: 1fr 4fr;
 
+        @media (max-width: 750px) {
+            grid-template-columns: 0 1fr;
+        }
+
         .foodGroup {
             position: fixed;
             width: 17vw;
@@ -66,12 +78,49 @@
                     color: orange;
                 }
             }
+
+            @media (max-width: 750px) {
+                display: none;
+                width: 0;
+            }
         }
 
         .menu {
             padding-left: 5rem;
             border-left: solid;
             border-width: thin;
+
+            @media (max-width: 750px) {
+                border-left: none;
+                padding-left: 1rem;
+            }
+        }
+    }
+
+    .cart {
+        position: fixed;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        // padding: 2rem 0;
+        text-decoration: none;
+
+        bottom: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 20%;
+        height: 4rem;
+
+        display: grid;
+        place-items: center;
+
+        button {
+            font-size: x-large;
+            background-color: darkgreen;
+            height: 80%;
+            width: 50%;
+            border-radius: 20%;
         }
     }
 }

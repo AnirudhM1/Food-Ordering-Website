@@ -6,7 +6,6 @@ import Styles from '../styles/pages/Home.module.scss';
 const Home = ({ restaurants }) => {
     return (
         <div className={Styles.main}>
-            HOME
             <Search />
             <div className={Styles.container}>
                 {restaurants.map((restaurant) => (

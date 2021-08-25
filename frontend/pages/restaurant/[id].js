@@ -1,35 +1,41 @@
+import { useContext } from 'react'
 import axios from 'axios'
 import FoodGroup from '../../components/FoodGroup'
+import { CartContext } from '../_app'
 import Styles from '../../styles/pages/Restaurant.module.scss'
 
 const Restaurant = ({ restaurant }) => {
 
-    const menu = [
-        {
-            name: 'Pizza', foodItems: [
-                { name: 'Chicken Pizza', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/216054.jpg?output-format=auto&output-quality=auto', quantity: 2 },
-                { name: 'Veg Pizza', description: 'Why would you order this? No need to pay. It is free', cost: 0, imageUrl: 'https://static.toiimg.com/thumb/53351352.cms?imgsize=151967&width=800&height=800', quantity: 0 },
-                { name: 'Chicken salami Pizza', description: 'Thin crust chicken salami pizza', cost: 750, imageUrl: 'https://www.kingarthurbaking.com/sites/default/files/styles/featured_image/public/2020-03/super-fast-thin-crust-pizza.jpg?itok=u3Xodz0C', quantity: 2 },
-                { name: 'Mixed Pizza', description: 'Pizza with different ingredients', cost: 800, imageUrl: 'https://imgmedia.lbb.in/media/2020/12/5fe323e5282cde4610e3face_1608721381076.jpg', quantity: 2 }
-            ]
-        },
-        {
-            name: 'Burger', foodItems: [
-                { name: 'Chicken Burger', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg', quantity: 2 },
-                { name: 'Veg Burger', description: 'Tasty veg pizza', cost: 700, imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg', quantity: 2 },
-                { name: 'Double Chicken Burger', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg', quantity: 2 },
-                { name: 'Fish Burger', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg', quantity: 2 }
-            ]
-        },
-        {
-            name: 'Desert', foodItems: [
-                { name: 'Mango Ice Cream', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'http://fun-18592.kxcdn.com/images/uploads/article-images/_mobile/category-icecream.jpg', quantity: 2 },
-                { name: 'Chocolate Ice Cream', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'http://fun-18592.kxcdn.com/images/uploads/article-images/_mobile/category-icecream.jpg', quantity: 2 },
-                { name: 'Strawberry Ice Cream', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'http://fun-18592.kxcdn.com/images/uploads/article-images/_mobile/category-icecream.jpg', quantity: 2 },
-                { name: 'Guava Ice Cream', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'http://fun-18592.kxcdn.com/images/uploads/article-images/_mobile/category-icecream.jpg', quantity: 2 }
-            ]
-        }
-    ]
+    const context = useContext(CartContext)
+    const [cart, addItem] = context.cart
+
+    // const menu = [
+    //     {
+    //         name: 'Pizza', foodItems: [
+    //             { name: 'Chicken Pizza', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'https://img.buzzfeed.com/thumbnailer-prod-us-east-1/video-api/assets/216054.jpg?output-format=auto&output-quality=auto', quantity: 2 },
+    //             { name: 'Veg Pizza', description: 'Why would you order this? No need to pay. It is free', cost: 0, imageUrl: 'https://static.toiimg.com/thumb/53351352.cms?imgsize=151967&width=800&height=800', quantity: 0 },
+    //             { name: 'Chicken salami Pizza', description: 'Thin crust chicken salami pizza', cost: 750, imageUrl: 'https://www.kingarthurbaking.com/sites/default/files/styles/featured_image/public/2020-03/super-fast-thin-crust-pizza.jpg?itok=u3Xodz0C', quantity: 2 },
+    //             { name: 'Mixed Pizza', description: 'Pizza with different ingredients', cost: 800, imageUrl: 'https://imgmedia.lbb.in/media/2020/12/5fe323e5282cde4610e3face_1608721381076.jpg', quantity: 2 }
+    //         ]
+    //     },
+    //     {
+    //         name: 'Burger', foodItems: [
+    //             { name: 'Chicken Burger', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg', quantity: 2 },
+    //             { name: 'Veg Burger', description: 'Tasty veg pizza', cost: 700, imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg', quantity: 2 },
+    //             { name: 'Double Chicken Burger', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg', quantity: 2 },
+    //             { name: 'Fish Burger', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'https://hips.hearstapps.com/hmg-prod/images/190416-chicken-burger-082-1556204252.jpg', quantity: 2 }
+    //         ]
+    //     },
+    //     {
+    //         name: 'Desert', foodItems: [
+    //             { name: 'Mango Ice Cream', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'http://fun-18592.kxcdn.com/images/uploads/article-images/_mobile/category-icecream.jpg', quantity: 2 },
+    //             { name: 'Chocolate Ice Cream', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'http://fun-18592.kxcdn.com/images/uploads/article-images/_mobile/category-icecream.jpg', quantity: 2 },
+    //             { name: 'Strawberry Ice Cream', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'http://fun-18592.kxcdn.com/images/uploads/article-images/_mobile/category-icecream.jpg', quantity: 2 },
+    //             { name: 'Guava Ice Cream', description: 'Tasty chicken pizza', cost: 700, imageUrl: 'http://fun-18592.kxcdn.com/images/uploads/article-images/_mobile/category-icecream.jpg', quantity: 2 }
+    //         ]
+    //     }
+    // ]
+
 
     return (
         <div className={Styles.main}>
@@ -67,6 +73,9 @@ const Restaurant = ({ restaurant }) => {
                     ))}
                 </div>
             </div>
+            {(cart.length > 0) &&
+                <a className={Styles.cart} href="/cart"><button>View Cart</button></a>
+            }
         </div>
     )
 }

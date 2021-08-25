@@ -29,3 +29,14 @@ button {
     border-radius: 10%;
     border-style: none;
 }
+
+.app {
+    margin-top: var(--navbar-height);
+}
+
+@media (max-width: 750px) {
+    .app {
+        margin-top: 0;
+        margin-bottom: var(--navbar-height);
+    }
+}

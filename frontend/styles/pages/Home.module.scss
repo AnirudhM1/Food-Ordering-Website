@@ -11,5 +11,17 @@
         column-gap: 2rem;
         row-gap: 3rem;
         margin: 5rem;
+
+        @media (max-width: 1000px) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        @media (max-width: 750px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 500px) {
+            grid-template-columns: 1fr;
+        }
     }
 }

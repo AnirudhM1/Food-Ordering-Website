@@ -5,6 +5,10 @@
     min-height: calc(100vh - var(--navbar-height));
     background-color: black;
 
+    @media (max-width: 750px) {
+        margin-top: 0;
+    }
+
     .container {
         -webkit-box-sizing: border-box;
         -moz-box-sizing: border-box;
@@ -16,6 +20,10 @@
         flex-flow: column;
         background-color: var(--bg-primary);
 
+        @media (max-width: 750px) {
+            padding: 0.5rem;
+        }
+
         .user {
             display: flex;
             justify-content: space-between;
@@ -24,6 +32,13 @@
             border-width: thin;
             padding: 2rem;
             flex: 0 1 auto;
+
+            @media (max-width: 750px) {
+                padding: 1rem;
+                display: grid;
+                grid-template-columns: 1fr;
+                place-items: center;
+            }
 
             img {
                 border-radius: 50%;
@@ -43,6 +58,11 @@
             margin-top: 5rem;
             flex: 1 1 auto;
 
+            @media (max-width: 750px) {
+                grid-template-columns: 1fr;
+                margin-top: 1rem;
+            }
+
             .switch {
                 -webkit-box-sizing: border-box;
                 -moz-box-sizing: border-box;
@@ -51,12 +71,23 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
+
+                @media (max-width: 750px) {
+                    flex-direction: row;
+                    align-items: center;
+                    margin-bottom: 1rem;
+                }
             }
             .address {
                 margin-left: 5rem;
                 display: grid;
                 gap: 2rem;
                 grid-template-columns: 1fr 1fr;
+
+                @media (max-width: 750px) {
+                    margin-left: 0;
+                    grid-template-columns: 1fr;
+                }
 
                 .addAddress {
                     display: grid;

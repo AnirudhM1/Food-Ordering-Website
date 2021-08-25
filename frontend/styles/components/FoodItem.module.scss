@@ -7,6 +7,11 @@
     border-bottom: solid;
     border-width: thin;
 
+    @media (max-width: 750px) {
+        margin-right: 1rem;
+        grid-template-columns: 2fr 1fr;
+    }
+
     .text {
         display: flex;
         flex-direction: column;
@@ -53,6 +58,7 @@
             border-radius: 10px;
             color: lightgreen;
             background-color: white;
+            margin-top: 1rem;
         }
     }
 }

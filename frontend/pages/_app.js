@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import jwt from 'jsonwebtoken'
 import Navbar from '../components/navbar/Navbar'
 import { Provider } from 'next-auth/client'
 import '../styles/globals.css'
@@ -13,6 +14,10 @@ function MyApp({ Component, pageProps }) {
         console.log(itemToAdd)
         cart.push(itemToAdd);
         setCart(cart);
+        // Store cart as jwt to local storage
+        const SECRET = process.env.JWT_SECRET || 'SECRET';
+        const token = jwt.sign({ cart }, SECRET)
+        localStorage.setItem('cart', token)
     }
 
     const findItem = (searchItem) => {
@@ -46,19 +51,32 @@ function MyApp({ Component, pageProps }) {
     }
 
     const compare = (obj1, obj2) => {
-        console.log('Entered compare')
-        console.log('Comparing:')
-        console.dir({ obj1, obj2 })
         return (obj1.id === obj2.id && obj1.restaurant === obj2.restaurant && obj1.name === obj2.name)
     }
 
     const [restaurant, setRestaurant] = useState(null)
 
+    const addRestaurant = (rest) => {
+        setRestaurant(rest);
+        if (rest) {
+            const SECRET = process.env.JWT_SECRET || 'SECRET'
+            const token = jwt.sign({ rest }, SECRET)
+            localStorage.setItem('restaurant', token)
+        }
+    }
+
+    const resetCart = () => {
+        setCart([]);
+        setRestaurant(null);
+        localStorage.removeItem('cart');
+        localStorage.removeItem('restaurant');
+    }
+
     return (
         <Provider session={pageProps.session}>
-            <CartContext.Provider value={{ cart: [cart, addItem], restaurant: [restaurant, setRestaurant] }}>
+            <CartContext.Provider value={{ cart: [cart, addItem], restaurant: [restaurant, addRestaurant], reset: resetCart }}>
                 <Navbar />
-                <div style={{ "marginTop": '4rem' }}>
+                <div className="app">
                     <Component {...pageProps} />
                 </div>
             </CartContext.Provider>

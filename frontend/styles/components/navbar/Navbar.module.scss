@@ -8,6 +8,11 @@
     display: grid;
     place-items: center;
 
+    @media (max-width: 750px) {
+        top: auto;
+        bottom: 0;
+    }
+
     .container {
         height: 100%;
         width: 80%;

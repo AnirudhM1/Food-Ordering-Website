@@ -10,10 +10,36 @@
         column-gap: 2rem;
         width: 80%;
 
+        @media (max-width: 750px) {
+            grid-template-columns: 1fr;
+            width: auto;
+        }
+
         .info {
             background-color: var(--bg-primary);
             padding: 2rem;
             font-size: 1.2rem;
+
+            @media (max-width: 750px) {
+                grid-row: 2;
+            }
+
+            h2 {
+                text-align: center;
+            }
+
+            .signInContainer {
+                display: grid;
+                place-items: center;
+
+                button {
+                    border-radius: 20px;
+                    height: 60px;
+                    width: 30%;
+                    font-size: larger;
+                    margin-top: 1.5rem;
+                }
+            }
 
             .address {
                 -webkit-box-sizing: border-box;
@@ -25,6 +51,10 @@
                 row-gap: 2rem;
                 padding: 2rem 0;
 
+                @media (max-width: 750px) {
+                    grid-template-columns: 1fr;
+                }
+
                 .addAddress {
                     display: grid;
                     place-items: center;
@@ -33,6 +63,7 @@
                     button {
                         border-radius: 20px;
                         height: 40%;
+                        max-height: 80px;
                         width: 50%;
                         font-size: larger;
                     }
@@ -116,6 +147,22 @@
                     display: flex;
                     justify-content: space-between;
                     align-items: center;
+                }
+
+                .reset {
+                    display: grid;
+                    place-items: center;
+
+                    button {
+                        -webkit-box-sizing: border-box;
+                        -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+                        padding: 1rem;
+                        background-color: darkgreen;
+                        width: 40%;
+                        margin-top: 5rem;
+                        font-size: larger;
+                    }
                 }
             }
         }

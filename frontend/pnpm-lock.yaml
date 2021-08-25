@@ -4,6 +4,7 @@ specifiers:
   axios: ^0.21.1
   eslint: 7.32.0
   eslint-config-next: 11.0.1
+  jsonwebtoken: ^8.5.1
   mongoose: ^5.13.6
   mongoose-fuzzy-searching: ^2.0.2
   next: 11.0.1
@@ -14,6 +15,7 @@ specifiers:
 
 dependencies:
   axios: 0.21.1
+  jsonwebtoken: 8.5.1
   mongoose: 5.13.6
   mongoose-fuzzy-searching: 2.0.2_mongoose@5.13.6
   next: 11.0.1_795969e6c67f33972a5314df5f2f9ade

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import router from 'next/router'
 import axios from 'axios'
 import Styles from '../styles/components/AddAddress.module.scss'
 
@@ -14,6 +15,7 @@ const AddressCard = ({ id, isActive, setIsActive }) => {
         const body = { title, text };
         const res = await axios.post(URL, body).then(res => res.data);
         setIsActive(false);
+        router.reload();
     }
 
     const exit = () => {
