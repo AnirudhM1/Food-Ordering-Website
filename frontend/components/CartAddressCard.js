@@ -6,13 +6,14 @@ import Styles from '../styles/components/CartAddressCard.module.scss'
 const CartAddressCard = ({ id, address, total }) => {
 
     const context = useContext(CartContext)
-    const [cart, setCart] = context.cart
+    const [cart, addItems] = context.cart
     const [restaurant, setRestaurant] = context.restaurant
 
     // const [isNotificationVisible, setIsNotificationVisible] = useState(false);
 
     const deliver = async () => {
         const data = { address: address.title, restaurant: restaurant.name, total, food: [] };
+        console.log(data)
         for (let i = 0; i < cart.length; i++) {
             const { item, count } = cart[i];
             data.food.push({ item: item.id, count });

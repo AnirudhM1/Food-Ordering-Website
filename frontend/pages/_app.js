@@ -57,6 +57,8 @@ function MyApp({ Component, pageProps }) {
     const [restaurant, setRestaurant] = useState(null)
 
     const addRestaurant = (rest) => {
+        console.log('Recieved')
+        console.log({ rest })
         setRestaurant(rest);
         if (rest) {
             const SECRET = process.env.JWT_SECRET || 'SECRET'
@@ -72,9 +74,10 @@ function MyApp({ Component, pageProps }) {
         localStorage.removeItem('restaurant');
     }
 
+
     return (
         <Provider session={pageProps.session}>
-            <CartContext.Provider value={{ cart: [cart, addItem], restaurant: [restaurant, addRestaurant], reset: resetCart }}>
+            <CartContext.Provider value={{ cart: [cart, addItem], restaurant: [restaurant, addRestaurant], reset: resetCart, setCart }}>
                 <Navbar />
                 <div className="app">
                     <Component {...pageProps} />

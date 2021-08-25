@@ -6,6 +6,7 @@ import Styles from '../styles/components/AddAddress.module.scss'
 const AddressCard = ({ id, isActive, setIsActive }) => {
 
     const URL = `http://localhost:3000/api/user/${id}/address`;
+    console.log(URL)
 
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');

@@ -26,7 +26,7 @@ export const getServerSideProps = async (context) => {
     const query = context.params.query;
     let restaurants
     try {
-        const res = await axios.post(`${process.env.NEXTAUTH_URL}/api/restaurants/search`, { query })
+        const res = await axios.post(`http://localhost:3000/api/restaurants/search`, { query })
         restaurants = res.data
     } catch (e) {
         restaurants = []

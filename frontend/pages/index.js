@@ -28,7 +28,7 @@ export default Home;
 
 export const getStaticProps = async () => {
     const res = await axios
-        .get(`${process.env.NEXTAUTH_URL}/api/restaurants`)
+        .get(`http://localhost:3000/api/restaurants`)
         .catch((e) => console.error(e));
     const restaurants = res.data;
     return {

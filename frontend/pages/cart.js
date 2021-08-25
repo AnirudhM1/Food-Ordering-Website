@@ -16,8 +16,10 @@ const cart = ({ user_json }) => {
     const context = useContext(CartContext)
     const [contextCart, addItem] = context.cart
     const [cart, setCart] = useState([]);
+    const setDefaultCart = context.setCart;
     const [contextRestaurant, setContextRestaurant] = context.restaurant
     const [restaurant, setRestaurant] = useState(null)
+    console.log({ target: restaurant })
     const reset = context.reset;
     let user
     if (user_json !== null) user = JSON.parse(user_json)
@@ -39,15 +41,19 @@ const cart = ({ user_json }) => {
             }
             if (decodedToken_cart) {
                 setCart(decodedToken_cart.cart);
+                setDefaultCart(decodedToken_cart.cart);
             }
             if (decodedToken_restaurant) {
+                console.log({ target2: decodedToken_restaurant })
                 setRestaurant(decodedToken_restaurant.rest)
+                console.log('Setting restaurant')
+                console.log({ decodedToken_restaurant })
+                setContextRestaurant(decodedToken_restaurant.rest)
             }
         }
         else {
             setCart(contextCart);
             setRestaurant(contextRestaurant)
-            console.log({ restaurant })
         }
     }, [])
 
@@ -86,11 +92,11 @@ const cart = ({ user_json }) => {
                             </div>
                         </>
                     }
-                    {(user !== null) ||
+                    {(!user) &&
                         <>
                             <h2>You need to sign in to be able to order</h2>
                             <div className={Styles.signInContainer}>
-                                <button onClick={() => signIn('google', { callbackUrl: 'http://localhost:3000/cart' })}>Sign In</button>
+                                <button onClick={() => signIn('google', { callbackUrl: `http://localhost:3000/cart` })}>Sign In</button>
                             </div>
                         </>
                     }

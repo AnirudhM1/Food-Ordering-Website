@@ -64,7 +64,9 @@ const user = ({ user_json }) => {
                     )
                 }
             </div>
-            <AddAddress id={user._id} isActive={isActive} setIsActive={setIsActive} />
+            {user &&
+                <AddAddress id={user._id} isActive={isActive} setIsActive={setIsActive} />
+            }
         </>
     )
 }
