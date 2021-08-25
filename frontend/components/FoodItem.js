@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { CartContext } from '../pages/_app'
 import Styles from '../styles/components/FoodItem.module.scss'
 

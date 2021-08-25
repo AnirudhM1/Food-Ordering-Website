@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import router from 'next/router'
 import { CartContext } from './_app'
 import { getSession, signIn } from 'next-auth/client'

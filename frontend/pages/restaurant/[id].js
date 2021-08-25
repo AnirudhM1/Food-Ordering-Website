@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios'
 import FoodGroup from '../../components/FoodGroup'
 import { CartContext } from '../_app'

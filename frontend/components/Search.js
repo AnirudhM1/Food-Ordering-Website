@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import Styles from '../styles/components/Search.module.scss'
 
 const Search = (props) => {

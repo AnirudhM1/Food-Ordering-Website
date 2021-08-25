@@ -1,5 +1,5 @@
 import Nav from './Nav'
-import { useSession } from 'next-auth/client'
+import React, { useSession } from 'next-auth/client'
 import Styles from '../../styles/components/navbar/Navbar.module.scss'
 
 const Navbar = () => {
