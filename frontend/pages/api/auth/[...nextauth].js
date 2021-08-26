@@ -9,6 +9,7 @@ const options = {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
             async profile(profile, tokens) {
                 console.log('REACHED profile');
+                console.log({ profile });
                 try {
                     const user = await User.findOrCreate(profile.name, profile.picture, profile.id, profile.email)
                 } catch (e) {
