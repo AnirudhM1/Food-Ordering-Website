@@ -3,18 +3,21 @@ import router from 'next/router'
 import axios from 'axios'
 import Styles from '../styles/components/AddAddress.module.scss'
 
-const AddressCard = ({ id, isActive, setIsActive }) => {
+const AddressCard = ({ id, isActive, setIsActive, server }) => {
 
-    let host
-    if (window) {
-        host = window.location.origin;
-    }
-    else {
-        host = 'http://localhost:3000'
-    }
+    let host = 'http://localhost:3000'
+    // if (!server) {
+    //     server = 'http://localhost:3000'
+    // }
+    // if (window) {
+    //     host = window.location.origin;
+    // }
+    // else {
+    //     host = 'http://localhost:3000'
+    // }
 
-    const URL = `${host}/api/user/${id}/address`;
-    console.log(URL)
+    const URL = `${server}/api/user/${id}/address`;
+    console.log('URL: ', URL)
 
     const [title, setTitle] = useState('');
     const [text, setText] = useState('');

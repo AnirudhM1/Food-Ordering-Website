@@ -50,7 +50,7 @@ const user = ({ user_json }) => {
                                 </div>
                                 <div className={(option === 'address' ? Styles.address : Styles.order)}>
                                     {data.map((element, idx) => (
-                                        <Card key={idx} element={element} userId={user._id} />
+                                        <Card key={idx} element={element} userId={user._id} server={process.env.NEXT_PUBLIC_URL} />
                                     ))}
                                     {
                                         (option === 'address') &&
@@ -65,7 +65,7 @@ const user = ({ user_json }) => {
                 }
             </div>
             {user &&
-                <AddAddress id={user._id} isActive={isActive} setIsActive={setIsActive} />
+                <AddAddress id={user._id} isActive={isActive} setIsActive={setIsActive} server={process.env.NEXT_PUBLIC_URL} />
             }
         </>
     )

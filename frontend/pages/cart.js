@@ -75,13 +75,13 @@ const Cart = ({ user_json }) => {
 
     const charges = calculateTotal();
 
-    let host
-    if (window) {
-        host = window.location.origin;
-    }
-    else {
-        host = 'http://localhost:3000'
-    }
+    // let host
+    // if (window) {
+    //     host = window.location.origin;
+    // }
+    // else {
+    //     host = 'http://localhost:3000'
+    // }
 
     return (
         <div className={Styles.main}>
@@ -104,7 +104,7 @@ const Cart = ({ user_json }) => {
                         <>
                             <h2>You need to sign in to be able to order</h2>
                             <div className={Styles.signInContainer}>
-                                <button onClick={() => signIn('google', { callbackUrl: `${host}/cart` })}>Sign In</button>
+                                <button onClick={() => signIn('google', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/cart` })}>Sign In</button>
                             </div>
                         </>
                     }
@@ -161,7 +161,7 @@ const Cart = ({ user_json }) => {
                 </div>
             </div>
             {user &&
-                <AddAddress id={user._id} isActive={isActive} setIsActive={setIsActive} />
+                <AddAddress id={user._id} isActive={isActive} setIsActive={setIsActive} server={process.env.NEXT_PUBLIC_URL} />
             }
         </div>
     )
