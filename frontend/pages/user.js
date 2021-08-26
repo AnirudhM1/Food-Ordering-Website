@@ -18,6 +18,9 @@ const user = ({ user_json }) => {
     const data = (option === 'address') ? user && user.address : user && user.history
     const Card = (option === 'address') ? AddressCard : OrderCard
 
+    const server = (process.env.NODE_ENV !== 'production') ? process.env.NEXT_PUBLIC_URL : NEXT_PUBLIC_VERCEL_URL
+    console.log({ server })
+
 
     return (
         <>
@@ -50,7 +53,7 @@ const user = ({ user_json }) => {
                                 </div>
                                 <div className={(option === 'address' ? Styles.address : Styles.order)}>
                                     {data.map((element, idx) => (
-                                        <Card key={idx} element={element} userId={user._id} server={process.env.NEXT_PUBLIC_URL} />
+                                        <Card key={idx} element={element} userId={user._id} server={server} />
                                     ))}
                                     {
                                         (option === 'address') &&
@@ -65,7 +68,7 @@ const user = ({ user_json }) => {
                 }
             </div>
             {user &&
-                <AddAddress id={user._id} isActive={isActive} setIsActive={setIsActive} server={process.env.NEXT_PUBLIC_URL} />
+                <AddAddress id={user._id} isActive={isActive} setIsActive={setIsActive} server={server} />
             }
         </>
     )

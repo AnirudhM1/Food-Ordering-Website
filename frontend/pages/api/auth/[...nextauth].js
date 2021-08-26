@@ -8,6 +8,7 @@ const options = {
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
             async profile(profile, tokens) {
+                console.log('REACHED profile');
                 try {
                     const user = await User.findOrCreate(profile.name, profile.picture, profile.id, profile.email)
                 } catch (e) {
@@ -24,8 +25,13 @@ const options = {
     ],
     callbacks: {
         async session(session, user) {
+            console.log('Reached session callback')
             session.user.googleId = user.sub
             return session
+        },
+        async redirect(url, baseUrl) {
+            console.log('Reached redirect callback')
+            return url;
         }
     }
 }

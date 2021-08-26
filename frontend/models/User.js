@@ -22,6 +22,7 @@ const userSchema = new Schema({
 });
 
 userSchema.statics.findOrCreate = async function (name, image, googleId, email) {
+    console.log('Reached model find/create')
     const query = { name, image, googleId, email };
     const search = { googleId };
     try {

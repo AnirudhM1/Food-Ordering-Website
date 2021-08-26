@@ -83,6 +83,9 @@ const Cart = ({ user_json }) => {
     //     host = 'http://localhost:3000'
     // }
 
+    const server = (process.env.NODE_ENV !== 'production') ? process.env.NEXT_PUBLIC_URL : process.env.NEXT_PUBLIC_VERCEL_URL
+    console.log({ server })
+
     return (
         <div className={Styles.main}>
             <div className={Styles.container}>
@@ -104,7 +107,7 @@ const Cart = ({ user_json }) => {
                         <>
                             <h2>You need to sign in to be able to order</h2>
                             <div className={Styles.signInContainer}>
-                                <button onClick={() => signIn('google', { callbackUrl: `${process.env.NEXT_PUBLIC_URL}/cart` })}>Sign In</button>
+                                <button onClick={() => signIn('google', { callbackUrl: `${server}/cart` })}>Sign In</button>
                             </div>
                         </>
                     }
@@ -161,7 +164,7 @@ const Cart = ({ user_json }) => {
                 </div>
             </div>
             {user &&
-                <AddAddress id={user._id} isActive={isActive} setIsActive={setIsActive} server={process.env.NEXT_PUBLIC_URL} />
+                <AddAddress id={user._id} isActive={isActive} setIsActive={setIsActive} server={server} />
             }
         </div>
     )
