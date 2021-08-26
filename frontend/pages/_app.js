@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Head from 'next/head'
 import { Provider } from 'next-auth/client'
 import jwt from 'jsonwebtoken'
 import Navbar from '../components/navbar/Navbar'
@@ -77,15 +78,21 @@ function MyApp({ Component, pageProps }) {
 
 
     return (
-        <Provider session={pageProps.session}>
-            <CartContext.Provider value={{ cart: [cart, addItem], restaurant: [restaurant, addRestaurant], reset: resetCart, setCart }}>
-                <Navbar />
-                <div className="app">
-                    <Component {...pageProps} />
-                </div>
-                <Footer />
-            </CartContext.Provider>
-        </Provider>
+        <>
+            <Head>
+                <title>Cibus</title>
+                <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+            </Head>
+            <Provider session={pageProps.session}>
+                <CartContext.Provider value={{ cart: [cart, addItem], restaurant: [restaurant, addRestaurant], reset: resetCart, setCart }}>
+                    <Navbar />
+                    <div className="app">
+                        <Component {...pageProps} />
+                    </div>
+                    <Footer />
+                </CartContext.Provider>
+            </Provider>
+        </>
     )
 }
 
