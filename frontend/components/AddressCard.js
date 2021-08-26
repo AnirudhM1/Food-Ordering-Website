@@ -3,16 +3,16 @@ import React, { useState } from 'react'
 import router from 'next/router'
 import Styles from '../styles/components/AddressCard.module.scss'
 
-const AddressCard = ({ element, userId }) => {
+const AddressCard = ({ element, userId, server }) => {
     const address = element;
     let host
-    if (window) {
-        host = window.location.origin;
-    }
-    else {
-        host = 'http://localhost:3000'
-    }
-    const BUTTON_URL = `${host}/api/user/${userId}/address`;
+    // if (window) {
+    //     host = window.location.origin;
+    // }
+    // else {
+    //     host = 'http://localhost:3000'
+    // }
+    const BUTTON_URL = `${server}/api/user/${userId}/address`;
     const addressId = address._id;
 
     const deleteAddr = async () => {
