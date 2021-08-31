@@ -12,9 +12,11 @@ const options = {
                 console.log({ profile });
                 try {
                     const user = await User.findOrCreate(profile.name, profile.picture, profile.id, profile.email)
+                    console.log('user:', user)
                 } catch (e) {
                     console.error(e)
                 }
+                console.log('Completed profile. Ready to return')
                 return {
                     id: profile.id,
                     name: profile.name,
