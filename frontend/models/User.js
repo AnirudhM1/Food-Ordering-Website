@@ -27,7 +27,8 @@ userSchema.statics.findOrCreate = async function (name, image, googleId, email) 
     const search = { googleId };
     console.log('Data recieved:', { query, search });
     try {
-        let data = await this.findOne(search);
+        console.log('Enter try block')
+        let data = await this.findOne(search).exec();
         console.log('Data found:', data);
         if (data) {
             console.log('Reached if true')
