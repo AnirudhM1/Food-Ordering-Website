@@ -25,16 +25,23 @@ userSchema.statics.findOrCreate = async function (name, image, googleId, email) 
     console.log('Reached model find/create')
     const query = { name, image, googleId, email };
     const search = { googleId };
+    console.log('Data recieved:', { query, search });
     try {
         let data = await this.findOne(search);
+        console.log('Data found:', data);
         if (data) {
+            console.log('Reached if true')
             return data;
         } else {
+            console.log('Reached else')
             data = new this(query);
+            console.log('New data:', data)
             data = await data.save();
+            console.log('saved data:', data)
             return data;
         }
     } catch (e) {
+        console.log('Reached error')
         console.error(e);
     }
 };
